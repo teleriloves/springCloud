@@ -1,0 +1,18 @@
+package evolsoft.concesionario.mockito;
+
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+@RunWith(MockitoJUnitRunner.class)
+public class TestCocheServiceMockito {
+	
+	private static final Integer ID = 288;
+	private static final String MATRICULA = "0288KFC";
+	private static final String MARCA = "Fiat";
+	private static final String MODELO = "Multipla";
+	private static final String MOTOR = "1.9 JTD";
+	private static final Integer NUM_BASTIDOR = 288288;
+	private static final Double PRECIO = 10000.0;
+	
+	
+}

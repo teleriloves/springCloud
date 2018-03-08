@@ -1,0 +1,9 @@
+package com.example.pizzeria;
+
+public class initData {
+
+	public void init() {
+		
+	}
+	
+}

@@ -1,0 +1,5 @@
+package evolsoft.concesionario.model;
+
+public class Vendedor {
+
+}

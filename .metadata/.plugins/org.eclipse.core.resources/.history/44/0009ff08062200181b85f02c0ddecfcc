@@ -1,0 +1,69 @@
+package evolsoft.concesionario.mockito;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import evolsoft.concesionario.dao.ClienteDAO;
+import evolsoft.concesionario.dto.ClienteDTO;
+import evolsoft.concesionario.exception.NotFoundExcept;
+import evolsoft.concesionario.model.Cliente;
+import evolsoft.concesionario.service.ClienteService;
+import evolsoft.concesionario.service.impl.ClienteServiceImpl;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class TestClienteServiceMockito {
+	
+	private static final Integer ID = 288;
+	private static final String DNI = "12345678A";
+	private static final String NOMBRE = "Actor";
+	private static final Integer TELEFONO = 288288;
+	private static final String EMAIL = "actor@actor.es";
+	private static final Cliente CLIENTE = new Cliente();
+	private static final List<Cliente> LIST_CLIENTE = new ArrayList<>();
+	
+	@InjectMocks
+	private ClienteService clienteService = new ClienteServiceImpl();
+	
+	@Mock
+	ClienteDAO clienteDAO;
+	
+	@Before
+	public void init() {
+		CLIENTE.setId(ID);
+		CLIENTE.setDni(DNI);
+		CLIENTE.setNombre(NOMBRE);
+		CLIENTE.setTlf(TELEFONO);
+		CLIENTE.setEmail(EMAIL);
+		Mockito.when(clienteDAO.findOne(ID)).thenReturn(CLIENTE);
+		Mockito.when(clienteDAO.findAll()).thenReturn(LIST_CLIENTE);
+		Mockito.when(clienteDAO.save(CLIENTE)).thenReturn(CLIENTE);
+	}
+	
+	@Test
+	public void testFindClienteOK() throws NotFoundExcept {
+		final ClienteDTO clienteDTO = clienteService.findById(ID);
+		
+		Assert.assertNotNull(clienteDTO);
+		Assert.assertEquals(clienteDTO.getId(),ID);
+		Assert.assertEquals(clienteDTO.getDni(), DNI);
+		Assert.assertEquals(clienteDTO.getNombre(), NOMBRE);
+		Assert.assertEquals(clienteDTO.getTlf(), TELEFONO);
+		Assert.assertEquals(clienteDTO.getEmail(), EMAIL);
+	}
+	
+	@Test(expected = NotFoundExcept.class)
+	public void testFindClienteError() throws NotFoundExcept {
+		clienteService.findById(420);
+	}
+	
+}

@@ -1,0 +1,5 @@
+package evolsoft.concesionario.mockito;
+
+public class TestClienteServiceMockito {
+
+}

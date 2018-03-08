@@ -1,0 +1,16 @@
+package evolsoft.concesionario.mockito;
+
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+@RunWith(MockitoJUnitRunner.class)
+public class TestClienteServiceMockito {
+	
+	private static final Integer ID = 288;
+	private static final String NOMBRE = "Actor";
+	private static final Integer TELEFONO = "288288;
+	private static final String EMAIL = "actor@actor.es";
+	
+	
+	
+}

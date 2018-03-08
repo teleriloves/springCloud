@@ -1,0 +1,18 @@
+package com.example.pizzeria;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.pizzeria.model.Pizza;
+
+public class initData {
+
+	List<Pizza> pizzas = new ArrayList<Pizza>();
+	List<Ingredient> ingredients = new ArrayList<Ingreient>();
+	
+	
+	public void init() {
+		
+	}
+	
+}

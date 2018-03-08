@@ -1,0 +1,5 @@
+package es.at.EurekaClient;
+
+public interface SaludosController {
+
+}
